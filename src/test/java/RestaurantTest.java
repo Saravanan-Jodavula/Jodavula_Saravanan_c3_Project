@@ -1,5 +1,7 @@
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.time.LocalTime;
 
@@ -44,10 +46,14 @@ class RestaurantTest {
         assertEquals(initialMenuSize+1,restaurant.getMenu().size());
     }
     @Test
-    public void select_item_from_list_should_return_order_cost_failing_test_case(){
-            int totalCost;
-            List<Item> selectedItems = null;
-            totalCost = restaurant.getTotalOrderValue(selectedItems) ;
+    public void selected_items_from_menu_should_return_total_cost(){
+            LocalTime openingTime = LocalTime.parse("10:30:00");
+            LocalTime closingTime = LocalTime.parse("22:00:00");
+            restaurant = new Restaurant("Amelie's cafe","Chennai",openingTime,closingTime);
+            restaurant.addToMenu("Sizzling brownie",319);
+            List<String> selectedItems = Arrays.asList("Sizzling brownie") ;
+            int totalCost = restaurant.getTotalOrderValue(selectedItems);
+            assertEquals(319, totalCost);
     }
     @Test
     public void removing_item_from_menu_should_decrease_menu_size_by_1() throws itemNotFoundException {
