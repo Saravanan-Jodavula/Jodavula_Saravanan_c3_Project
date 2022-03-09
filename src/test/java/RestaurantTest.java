@@ -1,6 +1,6 @@
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
+import java.util.List;
 import java.time.LocalTime;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -42,6 +42,12 @@ class RestaurantTest {
         int initialMenuSize = restaurant.getMenu().size();
         restaurant.addToMenu("Sizzling brownie",319);
         assertEquals(initialMenuSize+1,restaurant.getMenu().size());
+    }
+    @Test
+    public void select_item_from_list_should_return_order_cost_failing_test_case(){
+            int totalCost;
+            List<Item> selectedItems = null;
+            totalCost = restaurant.getTotalOrderValue(selectedItems) ;
     }
     @Test
     public void removing_item_from_menu_should_decrease_menu_size_by_1() throws itemNotFoundException {
